@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+<context:component-scan base-package="com.qphone.serviceimpl"></context:component-scan>
+<!-- 定义服务提供者在dubbo中的名称 -->
+<dubbo:application name="Day87MavenSSMDubboController"/>
+<!-- 完成dubbo的注册 -->
+<dubbo:registry address="zookeeper://10.12.153.61:2181"></dubbo:registry>
+<!--获取提供方提供的接口数据  --> 
+<dubbo:reference interface="com.qphone.service.DeptService" id="deptServiceImpl" ></dubbo:reference>
+</beans>
